@@ -40,5 +40,5 @@ A low-quality web browser built with Python and PyQt5, featuring a sleek modern 
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/sigma-browser-infinity.git
+git clone https://github.com/p4ncake3/sigma-browser-infinity.git
 cd sigma-browser-infinity
