@@ -40,6 +40,11 @@ A low-quality web browser built with Python and PyQt5, featuring a sleek modern 
 - pip package manager
 
 ### Installation
+Just download the .exe
+
+From [Releases](https://github.com/microwave26/sigma-browser-infinity/releases/tag/v1.0) ( Windows only )
+
+Or if you want to do it manually,
 
 1. **Clone the repository:**
 ```bash
