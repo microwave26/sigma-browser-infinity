@@ -1,6 +1,7 @@
 this browser is made by deepseek ai so uh it isnt good
 
 # 🔥 Sigma Browser Infinity
+![Icon](screenshots/sigma-icon.png)
 
 ![Sigma Browser](https://img.shields.io/badge/version-2.0-blue)
 ![Python](https://img.shields.io/badge/python-3.7+-green)
