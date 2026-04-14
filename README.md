@@ -48,7 +48,7 @@ Or if you want to do it manually,
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/sigma-browser-infinity.git
+git clone https://github.com/microwave26/sigma-browser-infinity.git
 cd sigma-browser-infinity
 ```
 2. **Install dependencies:**
