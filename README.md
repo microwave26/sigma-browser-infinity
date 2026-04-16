@@ -3,6 +3,7 @@ this browser is made by deepseek ai so uh it isnt good
 # 🔥 Sigma Browser Infinity
 ![Icon](screenshots/sigma-icon.png)
 
+![Please dont](https://img.shields.io/badge/Please-DONT_DOWNLOAD-red)
 ![Sigma Browser](https://img.shields.io/badge/version-1.0-blue)
 ![Python](https://img.shields.io/badge/python-3.7+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
