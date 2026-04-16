@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigma Browser Infinity — Browse Without Limits (But Not Really)</title>
+    <link rel="icon" type="image/png" href="sigma-icon.png">
+    <style>
+    /* UPDATED COLOR SCHEME: GREEN & BLUE */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: #0a0e1a;
+        color: #e8f0fe;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    /* Header & Navigation */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(100, 255, 180, 0.1);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .logo-img {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        object-fit: contain;
+        background: linear-gradient(135deg, #00e5a0, #0088ff);
+        box-shadow: 0 8px 20px rgba(0, 200, 150, 0.3);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        font-weight: 500;
+    }
+
+    .nav-links a {
+        color: #a0c4ff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+        color: #00ffcc;
+    }
+
+    .btn-download {
+    background: linear-gradient(135deg, #00b894, #0077be);
+    color: white !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 40px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 200, 180, 0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-download:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(0, 220, 200, 0.4);
+        background: linear-gradient(135deg, #00d4a0, #0090d4);
+    }
+
+    /* Hero section */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 5rem 0 4rem;
+    }
+
+    .badge {
+        background: rgba(0, 200, 180, 0.15);
+        color: #7fffd4;
+        border: 1px solid rgba(0, 255, 200, 0.3);
+        padding: 0.3rem 1rem;
+        border-radius: 40px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(4px);
+    }
+
+    h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        max-width: 900px;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #a0e7ff, #7fffd4, #4db8ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: 1.35rem;
+        color: #9bb5e0;
+        max-width: 700px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #00c8a0, #0070d4);
+        color: rgb(255, 255, 255);
+        padding: 0.9rem 2.2rem;
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        box-shadow: 0 10px 25px -5px rgba(0, 180, 200, 0.4);
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #00e0b0, #0088e8);
+        transform: scale(1.02);
+        box-shadow: 0 12px 30px -5px rgba(0, 210, 220, 0.5);
+    }
+
+    .btn-secondary {
+        background: rgba(0, 100, 150, 0.15);
+        color: #b0e0ff;
+        padding: 0.9rem 2.2rem;
+        border-radius: 60px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-decoration: none;
+        border: 1px solid rgba(0, 200, 200, 0.2);
+        transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(0, 150, 200, 0.25);
+        border-color: rgba(0, 220, 220, 0.4);
+    }
+
+    .stats {
+        display: flex;
+        gap: 3rem;
+        justify-content: center;
+        margin: 2rem 0;
+        color: #7aa5c0;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #a0f0ff;
+    }
+
+    .stat-label {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+    }
+
+    /* Feature grid */
+    .feature-section {
+        padding: 4rem 0;
+        border-top: 1px solid rgba(0, 200, 180, 0.1);
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        text-align: center;
+        background: linear-gradient(to right, #a0f0ff, #80ffd4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .feature-card {
+        background: rgba(10, 25, 45, 0.7);
+        border: 1px solid rgba(0, 200, 200, 0.1);
+        border-radius: 24px;
+        padding: 2rem 1.8rem;
+        backdrop-filter: blur(8px);
+        transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+        border-color: rgba(0, 230, 200, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px -10px rgba(0, 150, 200, 0.2);
+    }
+
+    .feature-icon {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        color: #c0ecff;
+    }
+
+    .feature-card p {
+        color: #8ab0d4;
+    }
+
+    /* Code block */
+    .code-showcase {
+        background: #0c1622;
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 3rem 0;
+        border: 1px solid #1a3a4a;
+        overflow-x: auto;
+    }
+
+    .code-header {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 1.2rem;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    pre {
+        font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        color: #c9d1d9;
+        font-size: 0.95rem;
+    }
+
+    .code-comment { color: #6a9fb5; }
+    .code-keyword { color: #7fc9ff; }
+    .code-string { color: #8affc1; }
+    .code-function { color: #b0d4ff; }
+
+    /* Disclaimer */
+    .disclaimer {
+        background: #0a1a28;
+        border-left: 4px solid #00d4b0;
+        padding: 1.5rem 2rem;
+        border-radius: 16px;
+        margin: 3rem 0;
+        font-size: 1.1rem;
+        color: #b0e8e0;
+    }
+
+    .disclaimer strong {
+        color: #60ffd0;
+    }
+
+    /* Footer */
+    footer {
+        margin-top: 4rem;
+        padding: 2.5rem 0;
+        border-top: 1px solid rgba(0, 200, 180, 0.15);
+        color: #5a8aaa;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .footer-links a {
+        color: #80c0e0;
+        text-decoration: none;
+    }
+
+    .footer-links a:hover {
+        color: #a0f0e0;
+    }
+
+    /* Shortcuts table */
+    .shortcuts-grid {
+        background: #0d1b2a;
+        border: 1px solid rgba(0, 200, 180, 0.15);
+    }
+
+    .shortcuts-grid code {
+        background: #1a2e40;
+        color: #a0e8d4;
+    }
+
+    @media (max-width: 700px) {
+        h1 { font-size: 2.8rem; }
+        .navbar { flex-direction: column; gap: 1rem; }
+        .hero-cta { flex-direction: column; width: 100%; }
+        .stats { flex-wrap: wrap; gap: 2rem; }
+    }
+</style>       
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <!-- Updated logo section in navbar -->
+            <a href="#" class="logo">
+                <img src="sigma-icon.png" alt="Sigma Browser Infinity" class="logo-img">
+                <span>Sigma Browser Infinity</span> 
+            </a>
+            <div class="nav-links">
+                <a href="https://github.com/microwave26/sigma-browser-infinity">GitHub</a>
+                <a href="#features">Features</a>
+                <!-- Direct GitHub release download (no repo page) -->
+                <a href="https://github.com/microwave26/sigma-browser-infinity/releases/latest/download/SigmaBrowserInfinity.exe" class="btn-primary">Download</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="badge">🔥 MADE BY DEEPSEEK AI · 100% IRONIC</div>
+            <h1>A browser with nothing you need — limited possibilities.</h1>
+            <p class="hero-subtitle">
+                Sigma Browser Infinity is the least necessary browser you'll ever install. 
+                Built with Python & PyQt5, it delivers "advanced privacy features" that you probably won't use.
+            </p>
+            <div class="hero-cta">
+                <!-- Direct GitHub release download (no repo page) -->
+                <a href="https://github.com/microwave26/sigma-browser-infinity/releases/latest/download/SigmaBrowserInfinity.exe" class="btn-primary">
+                    ⬇️ Download Sigma Browser Infinity (Windows .exe)
+                </a>
+                <a href="https://github.com/microwave26/sigma-browser-infinity" class="btn-secondary">View source →</a>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Stars (so far)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Commits</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Low-quality release</span>
+                </div>
+                <br>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Potential downloads</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Actual downloads</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Geode-inspired "code block" showing that it's "moddable" -->
+        <div class="code-showcase">
+            <div class="code-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <pre>
+<span class="code-comment"># Sigma Browser Infinity — "Extension" support (sort of)</span>
+<span class="code-keyword">from</span> PyQt5.QtWidgets <span class="code-keyword">import</span> QApplication
+<span class="code-keyword">import</span> browser  <span class="code-comment"># this is the whole browser lol</span>
+
+<span class="code-keyword">class</span> <span class="code-function">SigmaExtension</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):
+        self.quality = <span class="code-string">"questionable"</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">enhance</span>(self):
+        <span class="code-keyword">print</span>(<span class="code-string">"Sigma mode activated. No actual effect."</span>)
+
+<span class="code-comment"># Built with PyQt5 & DeepSeek AI vibes</span>
+app = QApplication([])
+window = browser.MainWindow()  <span class="code-comment"># That's it. That's the app.</span>
+window.show()
+app.exec_()</pre>
+        </div>
+
+        <!-- Features exactly like Geode's "smooth modding" section -->
+        <section class="feature-section" id="features">
+            <h2 class="section-title">⚡ Core Features (Allegedly)</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>Dark/Light Mode</h3>
+                    <p>Switch between beautiful themes. It's basically the only thing that works consistently.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕶️</div>
+                    <h3>Private Mode</h3>
+                    <p>Browse without saving history or cookies. Because nobody needs to know.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Built-in Ad Blocker</h3>
+                    <p>Automatically blocks ads. We think. We haven't actually tested it on many sites.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Password Manager</h3>
+                    <p>Encrypted storage. Probably safer than writing passwords on a sticky note.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h3>Tab Groups</h3>
+                    <p>Save and organize tabs. For the 2 people who actually use tab groups.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Extensions Support</h3>
+                    <p>Enable/disable extensions easily. (None exist, but the button is there.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Joke / disclaimer matching the README self-awareness -->
+        <div class="disclaimer">
+            <strong>⚠️ OFFICIAL DISCLAIMER:</strong> "this browser is made by deepseek ai so uh it isnt good" — 
+            It's a low-quality web browser built with Python and PyQt5, featuring a sleek modern design and 
+            advanced privacy features that you should not trust with anything important. <br/><br/>
+            <strong>Σ∞ Sigma Browser Infinity — Browse Without Limits (but with plenty of bugs).</strong>
+        </div>
+
+        <!-- Shortcuts table (Geode-like clean reference) -->
+        <h3 style="margin: 2rem 0 1rem;">⌨️ Keyboard Shortcuts (they actually work)</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem 2rem; background: #131a26; padding: 1.5rem 2rem; border-radius: 20px; margin-bottom: 2rem;">
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">Ctrl+T</code> New Tab</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">Ctrl+W</code> Close Tab</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">Ctrl+Shift+N</code> New Private Window</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">Ctrl+L</code> Focus Address Bar</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">F5 / Ctrl+R</code> Refresh</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">Ctrl+Shift+I</code> Developer Tools</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">F11</code> Full Screen</div>
+            <div><code style="background:#252e3b; padding:0.2rem 0.6rem; border-radius:6px;">Ctrl+Shift+D</code> Toggle Dark Mode</div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div>© 2026 microwave26 & DeepSeek AI · MIT License</div>
+            <div class="footer-links">
+                <a href="https://github.com/microwave26/sigma-browser-infinity">GitHub</a>
+                <a href="https://github.com/microwave26/sigma-browser-infinity/releases">Releases</a>
+                <a href="#">Privacy (none)</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
