@@ -14,6 +14,9 @@ A low-quality web browser built with Python and PyQt5, featuring a sleek modern 
 
 ![Sigma Browser Screenshot](screenshots/sigma-browser.png)
 
+## 🌐 Website
+[Visit the Sigma Browser Infinity website](https://microwave26.github.io/sigma-browser-infinity)
+
 ## ✨ Features
 
 ### Core Features
